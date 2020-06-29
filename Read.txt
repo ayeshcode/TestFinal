@@ -1,0 +1,51 @@
+https://www.youtube.com/watch?v=ajuT04AAhrU
+http://www.voidgeeks.com/tutorial/CRUD-Operation-in-ASPNET-Core-MVC-Using-Visual-Studio-and-ADONET/7
+
+CREATE PROC Sp_User 
+@Id int , 
+@UserName nvarchar(500), 
+@Password nvarchar(500),  
+@Email nvarchar(500), 
+@Status nvarchar(500), 
+@Role nvarchar(50) ,
+@flag nvarchar(50)
+
+AS 
+ begin 
+ IF(@flag='insert') 
+ BEGIN 
+ INSERT INTO dbo.SystemUsers
+ ( 
+     UserName, 
+     Password, 
+     Email, 
+     Status, 
+     Role 
+ ) 
+ VALUES 
+ (  @UserName,
+  @Password,   
+  @Email , 
+  @Status  ,
+  @Role   
+     ) 
+ end 
+ ELSE IF(@flag='update') 
+ BEGIN 
+   UPDATE dbo.SystemUsers  SET 
+    UserName=@UserName,Password=@Password,Email=@Email,Role=@Role
+ WHERE Id=@Id 
+ END 
+  ELSE IF(@flag='delete') 
+ BEGIN 
+   DELETE FROM SystemUsers  WHERE Id=@Id 
+ END 
+  ELSE IF(@flag='getid') 
+ BEGIN 
+   SELECT * FROM SystemUsers WHERE Id=@Id
+ END 
+ ELSE IF(@flag='get') 
+ BEGIN 
+   SELECT * FROM SystemUsers 
+ end 
+ END
