@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<PracticalTest.Models.Staff>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Employee Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.Password</td>
+                <td>@item.Email</td>
+                <td>@item.Status</td>
+                <td>@item.Role</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

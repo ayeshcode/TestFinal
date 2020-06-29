@@ -1,0 +1,10 @@
+﻿
+<h4>wELCOME, @ViewBag.UserName</h4>
+
+
+
+@if (ViewBag.Role == "Admin")
+{
+    <li><a asp-area="" asp-controller="User" asp-action="Index">Manage Staff</a></li>
+}
+<a>Details</a>
